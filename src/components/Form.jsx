@@ -1,7 +1,28 @@
 import React from "react";
-
+import styled from "styled-components";
+const FormStyles = styled.form`
+  padding: 1rem;
+`;
 const Form = () => {
-  return <div>This is a form</div>;
+  return (
+    <FormStyles>
+      <fieldset>
+        <legend>Fruit juice size</legend>
+        <p>
+          <input type="radio" name="size" id="size_1" value="small" />
+          <label for="size_1">Small</label>
+        </p>
+        <p>
+          <input type="radio" name="size" id="size_2" value="medium" />
+          <label for="size_2">Medium</label>
+        </p>
+        <p>
+          <input type="radio" name="size" id="size_3" value="large" />
+          <label for="size_3">Large</label>
+        </p>
+      </fieldset>
+    </FormStyles>
+  );
 };
 
 export default Form;
