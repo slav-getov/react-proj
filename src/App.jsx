@@ -16,7 +16,7 @@ const App = () => (
       <Router>
         <SideBar options={sidebarOptions} />
         <Switch>
-          <Route path="/form">
+          <Route path="/quote">
             <Form />
           </Route>
           <Route path="/table">

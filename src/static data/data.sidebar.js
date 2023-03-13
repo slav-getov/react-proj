@@ -1,1 +1,4 @@
-export const sidebarOptions = [{ entityName: "Form" }, { entityName: "Table" }];
+export const sidebarOptions = [
+  { entityName: "Quote" },
+  { entityName: "Table" },
+];

@@ -8,7 +8,7 @@ const HeaderStyles = styled.header`
   background-color: cornflowerblue;
   padding: 2rem 1rem;
   color: white;
-  clip-path: polygon(0 0, 40% 0%, 35% 100%, 0% 100%);
+  clip-path: polygon(0 0, 70% 0%, 60% 100%, 0% 100%);
 `;
 
 const Header = ({ titleOfHeader }) => {

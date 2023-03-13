@@ -7,10 +7,12 @@ const Form = () => {
   return (
     <FormStyles>
       <fieldset>
-        <legend>Fruit juice size</legend>
+        <legend>Request maintenance quote</legend>
         <p>
-          <input type="radio" name="size" id="size_1" value="small" />
-          <label for="size_1">Small</label>
+          <label for="land_size_input">
+            Land size
+            <input type="text" name="size" id="land_size_input" value="small" />
+          </label>
         </p>
         <p>
           <input type="radio" name="size" id="size_2" value="medium" />
