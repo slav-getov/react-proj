@@ -14,7 +14,7 @@ const ButtonStyles = styled.button`
 
 export const ActionableButton = ({ title, onClick, active }) => {
   return (
-    <ButtonStyles active={false} onClick={() => console.log("clicked me!")}>
+    <ButtonStyles active={active} onClick={() => console.log("clicked me!")}>
       {title}
     </ButtonStyles>
   );
