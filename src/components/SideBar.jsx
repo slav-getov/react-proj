@@ -1,12 +1,16 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const SideBar = ({ options }) => {
   return (
     <aside>
       {options.map((singleOption) => (
-        <section key={singleOption.entityName}>
-          {singleOption.entityName}
-        </section>
+        <Link
+          key={singleOption.entityName}
+          exact="true"
+          to={"/" + singleOption.entityName.toLowerCase()}
+        >
+          <section>{singleOption.entityName}</section>
+        </Link>
       ))}
     </aside>
   );
