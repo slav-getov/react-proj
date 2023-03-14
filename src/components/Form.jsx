@@ -40,7 +40,7 @@ const Form = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, ...formState },
   } = useForm({ mode: "all" });
   const onSubmit = (data) => console.log(data);
 
@@ -49,9 +49,21 @@ const Form = () => {
       <legend>Get a Farm Maintenance Quote</legend>
       <div>
         <StyledLabel htmlFor="fullName">Full Name</StyledLabel>
-        <StyledInput defaultValue="test" {...register("fullName")} />
+        <StyledInput
+          defaultValue="test"
+          {...register("fullName", {
+            required: {
+              value: true,
+              message: "Please make sure form is filled",
+            },
+            pattern: {
+              value: /[^0-9]{1,}/,
+              message: "Please enter only word chars or special symbols",
+            },
+          })}
+        />
 
-        <StyledLabel htmlFor="sea">Sea pressure</StyledLabel>
+        {/* <StyledLabel htmlFor="sea">Sea pressure</StyledLabel>
         <StyledInput
           {...register(
             "sea",
@@ -70,10 +82,12 @@ const Form = () => {
             { required: true },
             { onBlur: handleSubmit(onSubmit) }
           )}
-        />
+        /> */}
 
         <div>
-          {errors.landSqr && <StyledAlert>This field is required</StyledAlert>}
+          {errors.fullName?.message && (
+            <StyledAlert>{errors.fullName?.message}</StyledAlert>
+          )}
         </div>
 
         <StyledButton type="submit" title="Submit" />
