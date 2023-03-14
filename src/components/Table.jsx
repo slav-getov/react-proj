@@ -3,9 +3,11 @@ import { tableData } from "../static data/data.table";
 import styled from "styled-components";
 const TableStyles = styled.table`
   table-layout: fixed;
+  margin-top: 1rem;
   width: 50%;
   border-collapse: collapse;
   border: 3px solid purple;
+  text-align: center;
 `;
 const Table = () => {
   return (
@@ -18,7 +20,16 @@ const Table = () => {
             ))}
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {tableData.map((singleEntityOfData) => (
+            <tr key={singleEntityOfData.fullName}>
+              <th>{singleEntityOfData.fullName}</th>
+              <td>{singleEntityOfData.area}</td>
+              <td>{singleEntityOfData.email}</td>
+              <td>{singleEntityOfData.phone}</td>
+            </tr>
+          ))}
+        </tbody>
       </TableStyles>
     </div>
   );
