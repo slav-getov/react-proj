@@ -40,17 +40,27 @@ const Form = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors, ...formState },
-  } = useForm({ mode: "all" });
+    reset,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "all",
+    criteriaMode: "all",
+    defaultValues: {
+      fullName: "",
+      areaSqr: "",
+      phone: "",
+      email: "",
+    },
+  });
   const onSubmit = (data) => console.log(data);
-
+  console.log(isValid);
   return (
     <FormStyles onSubmit={handleSubmit(onSubmit)}>
       <legend>Get a Farm Maintenance Quote</legend>
       <div>
         <StyledLabel htmlFor="fullName">Full Name</StyledLabel>
         <StyledInput
-          defaultValue="test"
+          placeholder="Mike Stephens"
           {...register("fullName", {
             required: {
               value: true,
@@ -65,6 +75,7 @@ const Form = () => {
 
         <StyledLabel htmlFor="area">Area in square meters</StyledLabel>
         <StyledInput
+          placeholder="1123"
           {...register("areaSqr", {
             required: {
               value: true,
@@ -79,6 +90,7 @@ const Form = () => {
 
         <StyledLabel htmlFor="phone">Phone Number</StyledLabel>
         <StyledInput
+          placeholder="+35988777"
           {...register("phone", {
             required: {
               value: true,
@@ -94,6 +106,7 @@ const Form = () => {
 
         <StyledLabel htmlFor="email">Email</StyledLabel>
         <StyledInput
+          placeholder="you@whatevermail.com"
           {...register("email", {
             required: {
               value: true,
@@ -102,8 +115,8 @@ const Form = () => {
           })}
         />
 
-        <StyledButton type="submit" title="Submit" />
-        <StyledButton title="Cancel" />
+        <StyledButton type="submit" title="Submit" isDisabled={!isValid} />
+        <StyledButton title="Cancel" onClick={() => reset()} />
 
         <div>
           {(errors.fullName?.message && (
