@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ActionableButton } from "../shared/ActionableButton";
 import { useForm } from "react-hook-form";
 const FormStyles = styled.form`
   background-color: #f4f4f4;
@@ -19,21 +20,11 @@ const StyledInput = styled.input`
   outline: none;
 `;
 
-const StyledButton = styled.button`
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:disabled {
-    opacity: 0.5;
+const StyledButton = styled(ActionableButton)`
+  background-color: green;
+  &:hover {
+    background-color: lime;
   }
-  &:enabled {
-    opacity: 1;
-  }
-  opacity: ${(props) => (!props.enabled ? 0.5 : 1)};
 `;
 
 const StyledAlert = styled.div`
@@ -57,24 +48,36 @@ const Form = () => {
     <FormStyles onSubmit={handleSubmit(onSubmit)}>
       <legend>Get a Farm Maintenance Quote</legend>
       <div>
-        <StyledLabel for="fullName">Full Name</StyledLabel>
-        <StyledInput defaultValue="test" {...register("full-name")} />
+        <StyledLabel htmlFor="fullName">Full Name</StyledLabel>
+        <StyledInput defaultValue="test" {...register("fullName")} />
 
-        {/* include validation with required or other standard HTML validation rules */}
-        <StyledLabel for="areaCode">Area Code</StyledLabel>
+        <StyledLabel htmlFor="sea">Sea pressure</StyledLabel>
         <StyledInput
           {...register(
-            "areaCode",
+            "sea",
+            { required: true },
+            { onBlur: handleSubmit(onSubmit) }
+          )}
+        />
+        <div>
+          {errors.sea && <StyledAlert>This field is required</StyledAlert>}
+        </div>
+
+        <StyledLabel htmlFor="landSqr">Land in square meters</StyledLabel>
+        <StyledInput
+          {...register(
+            "landSqr",
             { required: true },
             { onBlur: handleSubmit(onSubmit) }
           )}
         />
 
-        <StyledButton type="submit">Submit</StyledButton>
-      </div>
+        <div>
+          {errors.landSqr && <StyledAlert>This field is required</StyledAlert>}
+        </div>
 
-      <div>
-        {errors.areaCode && <StyledAlert>This field is required</StyledAlert>}
+        <StyledButton type="submit" title="Submit" />
+        <StyledButton title="Cancel" />
       </div>
     </FormStyles>
   );

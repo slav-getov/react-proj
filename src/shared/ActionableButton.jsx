@@ -2,19 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 const ButtonStyles = styled.button`
-  background: ${(props) => (props.active == true ? "palevioletred" : "black")};
-  font-family: "Poppins", sans-serif;
-  border: none;
-  border-radius: 0;
-  padding-inline: 1.75rem;
-  padding-block: 0.75rem;
-
+  background-color: blue;
   color: white;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
-export const ActionableButton = ({ title, onClick, active }) => {
+export const ActionableButton = ({ title, onClick, className }) => {
   return (
-    <ButtonStyles active={active} onClick={() => console.log("clicked me!")}>
+    <ButtonStyles className={className} onClick={onClick}>
       {title}
     </ButtonStyles>
   );
