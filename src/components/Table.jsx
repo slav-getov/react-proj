@@ -37,13 +37,13 @@ const Table = () => {
       <TableStyles>
         <thead>
           <tr>
-            {Object.keys(tableData[0]).map((singleObjectKey) => (
+            {Object.keys(objects[0]).map((singleObjectKey) => (
               <th key={singleObjectKey}>{singleObjectKey}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {tableData.map((singleEntityOfData) => (
+          {objects.map((singleEntityOfData) => (
             <tr key={singleEntityOfData.fullName}>
               <th>{singleEntityOfData.fullName}</th>
               <td>{singleEntityOfData.area}</td>

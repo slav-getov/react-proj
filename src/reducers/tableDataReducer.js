@@ -6,7 +6,7 @@ export const tableReducer = (objs, action) => {
       return [
         ...objs,
         {
-          fullName: action.fullName,
+          fullName: action.data.fullName,
           area: action.area,
           email: action.email,
           phone: action.phone,
