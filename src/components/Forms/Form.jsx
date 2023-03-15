@@ -21,6 +21,10 @@ const Form = () => {
   const handleReset = () => {
     setVersion((v) => v + 1);
   };
+  const handleChange = (e) => {
+    console.log(formState);
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <FormStyles
@@ -28,8 +32,9 @@ const Form = () => {
         onSubmit={(e) => {
           e.preventDefault();
           console.log(formState);
+
           handleReset();
-          console.log(version);
+
           console.log("hey you submitted!");
         }}
       >
@@ -38,13 +43,16 @@ const Form = () => {
           <StyledLabel htmlFor="fullName">Full Name</StyledLabel>
           <StyledInput
             placeholder="Mike Stephens"
-            onChange={(e) =>
-              setFormState({ ...formState, fullName: e.target.value })
-            }
+            name="fullName"
+            onChange={handleChange}
           />
 
           <StyledLabel htmlFor="area">Area in square meters</StyledLabel>
-          <StyledInput placeholder="1123" />
+          <StyledInput
+            placeholder="1123"
+            name="areaInSqr"
+            onChange={handleChange}
+          />
 
           <StyledLabel htmlFor="phone">Phone Number</StyledLabel>
           <StyledInput placeholder="+359911" />
