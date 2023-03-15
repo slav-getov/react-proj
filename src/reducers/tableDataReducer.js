@@ -1,15 +1,15 @@
 export const tableReducer = (objs, action) => {
-  const { fullName } = action;
-  console.log(action.data.fullName);
+  const { fullName, areaSqr, email, phone } = action.data;
+
   switch (action.type) {
     case "add": {
       return [
         ...objs,
         {
-          fullName: action.data.fullName,
-          area: action.area,
-          email: action.email,
-          phone: action.phone,
+          fullName: fullName,
+          area: areaSqr,
+          email: email,
+          phone: phone,
         },
       ];
     }

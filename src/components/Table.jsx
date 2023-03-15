@@ -12,13 +12,16 @@ const TableStyles = styled.table`
   border: 3px solid purple;
   text-align: center;
 `;
-
+const StyledLabel = styled.label`
+  font-weight: bold;
+`;
 const TableButtonStyles = styled(ActionableButton)`
   background-color: cornflowerblue;
   &:hover {
     background-color: darkblue;
   }
 `;
+
 const Table = () => {
   const [objects, dispatch] = useReducer(tableReducer, tableData);
   const {
