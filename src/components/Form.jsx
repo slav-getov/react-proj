@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ActionableButton } from "../shared/ActionableButton";
 import { useForm } from "react-hook-form";
@@ -41,7 +41,7 @@ const Form = () => {
     handleSubmit,
     watch,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isSubmitSuccessful },
   } = useForm({
     mode: "all",
     criteriaMode: "all",
@@ -52,8 +52,14 @@ const Form = () => {
       email: "",
     },
   });
-  const onSubmit = (data) => console.log(data);
-  console.log(isValid);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful, reset]);
+
   return (
     <FormStyles onSubmit={handleSubmit(onSubmit)}>
       <legend>Get a Farm Maintenance Quote</legend>
@@ -115,7 +121,7 @@ const Form = () => {
           })}
         />
 
-        <StyledButton type="submit" title="Submit" isDisabled={!isValid} />
+        <StyledButton type="submit" title="Submit" />
         <StyledButton title="Cancel" onClick={() => reset()} />
 
         <div>
