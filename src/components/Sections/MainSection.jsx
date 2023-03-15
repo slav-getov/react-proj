@@ -1,8 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-const MainSectionStyles = styled.div`
-  display: flex;
-`;
+import { MainSectionStyles } from "./mainsection.style.css";
+MainSectionStyles;
 const MainSection = ({ children }) => {
   return <MainSectionStyles>{children}</MainSectionStyles>;
 };

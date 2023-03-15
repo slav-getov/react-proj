@@ -1,11 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const DivStyles = styled.div`
-  background-color: #f4f4f4;
-  padding: 1rem;
-  border-radius: 2rem;
-`;
+import { DivStyles } from "./informationbox.style.css";
 const InformationBox = ({ valueToDisplay }) => {
   return (
     <DivStyles>

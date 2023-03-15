@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import SectionElement from "../shared/SectionElement";
-const SidebarStyles = styled.aside`
-  padding: 1rem 2rem;
-`;
+
+import SectionElement from "../../shared/SectionElement";
+import { SidebarStyles } from "./sidebar.style.css";
 const SideBar = ({ options }) => {
   return (
     <SidebarStyles>

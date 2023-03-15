@@ -1,10 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-const HoverStyles = styled.span`
-  &:hover {
-    font-style: italic;
-  }
-`;
+import { HoverStyles } from "./hover.style.css";
 const TextBoxWithHover = ({ value }) => {
   return <HoverStyles>{value}</HoverStyles>;
 };

@@ -1,15 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { GiFarmer } from "react-icons/gi";
-import TextBoxWithHover from "../shared/TextBoxWithHover";
-const HeaderStyles = styled.header`
-  display: flex;
-  align-items: center;
-  background-color: cornflowerblue;
-  padding: 2rem 1rem;
-  color: white;
-  clip-path: polygon(0 0, 70% 0%, 60% 100%, 0% 100%);
-`;
+import TextBoxWithHover from "../../shared/TextBoxWithHover";
+import { HeaderStyles } from "./header.style.css";
 
 const Header = ({ titleOfHeader }) => {
   return (

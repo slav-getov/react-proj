@@ -1,27 +1,9 @@
 import React, { useReducer } from "react";
-import { tableData } from "../static data/data.table";
-import { ActionableButton } from "../shared/ActionableButton";
-import { useForm } from "react-hook-form";
-import { tableReducer } from "../reducers/tableDataReducer";
-import styled from "styled-components";
-const TableStyles = styled.table`
-  table-layout: fixed;
-  margin-top: 2rem;
-  width: 50%;
-  border-collapse: collapse;
-  border: 3px solid purple;
-  text-align: center;
-`;
-const StyledLabel = styled.label`
-  font-weight: bold;
-`;
-const TableButtonStyles = styled(ActionableButton)`
-  background-color: cornflowerblue;
-  &:hover {
-    background-color: darkblue;
-  }
-`;
+import { tableData } from "../../static data/data.table";
 
+import { useForm } from "react-hook-form";
+import { tableReducer } from "../../reducers/tableDataReducer";
+import { TableStyles, StyledLabel, TableButtonStyles } from "./table.style.css";
 const Table = () => {
   const [objects, dispatch] = useReducer(tableReducer, tableData);
   const {
