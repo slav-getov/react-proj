@@ -6,7 +6,7 @@ import { tableReducer } from "../reducers/tableDataReducer";
 import styled from "styled-components";
 const TableStyles = styled.table`
   table-layout: fixed;
-  margin-top: 1rem;
+  margin-top: 2rem;
   width: 50%;
   border-collapse: collapse;
   border: 3px solid purple;

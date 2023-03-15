@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-const MainStyles = styled.main`
+const MainSectionStyles = styled.div`
   display: flex;
-  gap: 10rem;
 `;
 const MainSection = ({ children }) => {
-  return <MainStyles>{children}</MainStyles>;
+  return <MainSectionStyles>{children}</MainSectionStyles>;
 };
 
 export default MainSection;
