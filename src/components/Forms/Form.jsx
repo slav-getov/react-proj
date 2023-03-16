@@ -18,7 +18,7 @@ const Form = () => {
     phone: "",
     email: "",
   });
-  const { values, errors, handleChange, handleBlur } = useValidate(validate);
+  const { values, errors, handleBlur, handleChange } = useValidate(validate);
   useEffect(() => {
     console.log("re-render");
   }, []);
@@ -36,6 +36,7 @@ const Form = () => {
           console.log(formState);
           handleReset();
           console.log("hey you submitted!");
+          console.log(values);
         }}
       >
         <legend>Get a Farm Maintenance Quote</legend>
@@ -73,7 +74,10 @@ const Form = () => {
           />
         </div>
       </FormStyles>
-      {/* <div>{errors && <StyledAlert>{errorState}</StyledAlert>}</div> */}
+      <div>
+        {errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>}
+      </div>
+      {/* <div>{console.log(errors)}</div> */}
     </>
   );
 };

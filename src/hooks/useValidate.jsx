@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 export const useValidate = (validate) => {
-  const [errors, setErrors] = useState();
-  const [values, setValues] = useState();
-
+  const [errors, setErrors] = useState({});
+  const [values, setValues] = useState({});
+  const [isSafeToSubmit, setIsSafeToSubmit] = useState(false);
   const handleBlur = (e) => {
     setErrors(validate(values));
   };
@@ -13,5 +13,11 @@ export const useValidate = (validate) => {
     setValues((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
-  return { values, errors, handleBlur, handleChange };
+  const handleSubmit = (event) => {
+    if (event) event.preventDefault();
+    setErrors(validate(values));
+    setIsSafeToSubmit(true);
+  };
+
+  return { values, errors, handleBlur, handleChange, handleSubmit };
 };
