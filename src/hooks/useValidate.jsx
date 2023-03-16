@@ -5,6 +5,8 @@ export const useValidate = (validate) => {
   const [values, setValues] = useState({});
   const [isSafeToSubmit, setIsSafeToSubmit] = useState(false);
   const handleBlur = (e) => {
+    console.log(`blurred in ${e.target.name}`);
+    console.log(values);
     setErrors(validate(values));
   };
 
@@ -15,7 +17,7 @@ export const useValidate = (validate) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    setErrors(validate(values));
+    //setErrors(validate(values));
     setIsSafeToSubmit(true);
   };
 

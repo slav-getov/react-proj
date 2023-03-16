@@ -48,25 +48,27 @@ const Form = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-
+          {/* {errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>} */}
           <StyledLabel htmlFor="area">Area in square meters</StyledLabel>
           <StyledInput
             placeholder="1123"
-            name="areaInSqr"
-            //onChange={handleChange}
+            name="areaSqr"
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
-
+          {/* {errors.areaSqr && <div>{errors.areaSqr}</div>} */}
           <StyledLabel htmlFor="phone">Phone Number</StyledLabel>
           <StyledInput placeholder="+359911" />
 
           <StyledLabel htmlFor="email">Email</StyledLabel>
           <StyledInput placeholder="you@whatevermail.com" />
 
-          <StyledButton type="submit" title="Submit" />
+          <StyledButton type="submit" title="Submit" disabled={true} />
           <StyledButton
             title="Cancel"
             onClick={(e) => {
               e.preventDefault();
+              handleReset();
               console.log("you clicked reset!");
             }}
 
@@ -75,7 +77,8 @@ const Form = () => {
         </div>
       </FormStyles>
       <div>
-        {errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>}
+        {(errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>) ||
+          (errors.areaSqr && <StyledAlert>{errors.areaSqr}</StyledAlert>)}
       </div>
       {/* <div>{console.log(errors)}</div> */}
     </>

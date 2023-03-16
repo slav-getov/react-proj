@@ -25,6 +25,7 @@ const StyledButton = styled(ActionableButton)`
   &:hover {
     background-color: lime;
   }
+  pointer-events: ${(props) => (props.disabled ? "none" : null)};
 `;
 
 const StyledAlert = styled.div`
