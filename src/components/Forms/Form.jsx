@@ -33,7 +33,7 @@ const Form = () => {
         onSubmit={(e) => {
           e.preventDefault();
           //handleChange(e);
-          console.log(formState);
+          //console.log(formState); probably we won't need form state at this point
           handleReset();
           console.log("hey you submitted!");
           console.log(values);
