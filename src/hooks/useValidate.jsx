@@ -12,9 +12,10 @@ export const useValidate = (validate) => {
     if (Object.keys(errors).length == 0) {
       console.log("no errors");
       setIsSafeToSubmit(true);
-    } else {
-      setIsSafeToSubmit(false);
+      return;
     }
+
+    setIsSafeToSubmit(false);
   };
 
   const handleChange = (e) => {

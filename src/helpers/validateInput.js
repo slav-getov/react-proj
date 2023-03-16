@@ -14,9 +14,13 @@ export const validate = (values) => {
   }
 
   if (!values.phone) {
-    errors.phone = "The phone field is required.";
+    errors.phone = "The Phone field is required.";
   } else if (!/^([0-9|\+]*)$/.test(values.phone)) {
     errors.phone = "Invalid phone. Please don't use dashes or spaces.";
+  }
+
+  if (!values.email) {
+    errors.phone = "The Phone field is required.";
   }
 
   return errors;
