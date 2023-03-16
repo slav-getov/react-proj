@@ -8,20 +8,16 @@ import {
 } from "./form.style.css";
 import { validate } from "../../helpers/validateInput";
 import { useValidate } from "../../hooks/useValidate";
-
+import { ActionableButton } from "../../shared/ActionableButton";
 const Form = () => {
   const [version, setVersion] = useState(0);
-
-  const [formState, setFormState] = useState({
-    fullName: "",
-    areaInSqr: "",
-    phone: "",
-    email: "",
-  });
-  const { values, errors, handleBlur, handleChange } = useValidate(validate);
+  const { values, errors, handleBlur, handleChange, isSafeToSubmit } =
+    useValidate(validate);
   useEffect(() => {
     console.log("re-render");
-  }, []);
+    console.log(isSafeToSubmit);
+  });
+
   const handleReset = () => {
     setVersion((v) => v + 1);
   };
@@ -46,7 +42,9 @@ const Form = () => {
             placeholder="Mike Stephens"
             name="fullName"
             onChange={handleChange}
-            onBlur={handleBlur}
+            onBlur={() => {
+              console.log("blurred name");
+            }}
           />
           {/* {errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>} */}
           <StyledLabel htmlFor="area">Area in square meters</StyledLabel>
@@ -58,13 +56,25 @@ const Form = () => {
           />
           {/* {errors.areaSqr && <div>{errors.areaSqr}</div>} */}
           <StyledLabel htmlFor="phone">Phone Number</StyledLabel>
-          <StyledInput placeholder="+359911" />
+          <StyledInput
+            placeholder="+359911"
+            name="phone"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
 
           <StyledLabel htmlFor="email">Email</StyledLabel>
-          <StyledInput placeholder="you@whatevermail.com" />
+          <StyledInput
+            placeholder="you@whatevermail.com"
+            name="email"
+            onChange={handleChange}
+            onBlur={() => {
+              console.log("blurred email");
+            }}
+          />
 
-          <StyledButton type="submit" title="Submit" disabled={true} />
-          <StyledButton
+          <StyledButton type="submit" title="Submit" isSafe={isSafeToSubmit} />
+          <ActionableButton
             title="Cancel"
             onClick={(e) => {
               e.preventDefault();
@@ -78,7 +88,8 @@ const Form = () => {
       </FormStyles>
       <div>
         {(errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>) ||
-          (errors.areaSqr && <StyledAlert>{errors.areaSqr}</StyledAlert>)}
+          (errors.areaSqr && <StyledAlert>{errors.areaSqr}</StyledAlert>) ||
+          (errors.phone && <StyledAlert>{errors.phone}</StyledAlert>)}
       </div>
       {/* <div>{console.log(errors)}</div> */}
     </>

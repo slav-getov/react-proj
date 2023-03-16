@@ -6,7 +6,7 @@ const FormStyles = styled.form`
   padding: 20px;
   border-radius: 5px;
   margin-top: 2rem;
-  width: 30%;
+  width: 40%;
 `;
 const StyledLabel = styled.label`
   font-weight: bold;
@@ -21,11 +21,10 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled(ActionableButton)`
-  background-color: ${(props) => props.color};
   &:hover {
     background-color: lime;
   }
-  pointer-events: ${(props) => (props.disabled ? "none" : null)};
+  pointer-events: ${(props) => (props.isSafe ? null : "none")};
 `;
 
 const StyledAlert = styled.div`

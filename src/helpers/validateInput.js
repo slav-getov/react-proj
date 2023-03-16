@@ -13,5 +13,11 @@ export const validate = (values) => {
     errors.areaSqr = "The Area field only accepts positive numbers.";
   }
 
+  if (!values.phone) {
+    errors.phone = "The phone field is required.";
+  } else if (!/^([0-9|\+]*)$/.test(values.phone)) {
+    errors.phone = "Invalid phone. Please don't use dashes or spaces.";
+  }
+
   return errors;
 };
