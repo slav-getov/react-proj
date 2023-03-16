@@ -6,35 +6,35 @@ import {
   StyledLabel,
   StyledInput,
 } from "./form.style.css";
+import { validate } from "../../helpers/validateInput";
+import { useValidate } from "../../hooks/useValidate";
 
 const Form = () => {
   const [version, setVersion] = useState(0);
+
   const [formState, setFormState] = useState({
     fullName: "",
     areaInSqr: "",
     phone: "",
     email: "",
   });
+  const { values, errors, handleChange, handleBlur } = useValidate(validate);
   useEffect(() => {
     console.log("re-render");
   }, []);
   const handleReset = () => {
     setVersion((v) => v + 1);
   };
-  const handleChange = (e) => {
-    console.log(formState);
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
+
   return (
     <>
       <FormStyles
         key={version}
         onSubmit={(e) => {
           e.preventDefault();
+          //handleChange(e);
           console.log(formState);
-
           handleReset();
-
           console.log("hey you submitted!");
         }}
       >
@@ -45,13 +45,14 @@ const Form = () => {
             placeholder="Mike Stephens"
             name="fullName"
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <StyledLabel htmlFor="area">Area in square meters</StyledLabel>
           <StyledInput
             placeholder="1123"
             name="areaInSqr"
-            onChange={handleChange}
+            //onChange={handleChange}
           />
 
           <StyledLabel htmlFor="phone">Phone Number</StyledLabel>
@@ -72,6 +73,7 @@ const Form = () => {
           />
         </div>
       </FormStyles>
+      {/* <div>{errors && <StyledAlert>{errorState}</StyledAlert>}</div> */}
     </>
   );
 };
