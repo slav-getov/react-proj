@@ -42,9 +42,7 @@ const Form = () => {
             placeholder="Mike Stephens"
             name="fullName"
             onChange={handleChange}
-            onBlur={() => {
-              console.log("blurred name");
-            }}
+            onBlur={handleBlur}
           />
           {/* {errors.fullName && <StyledAlert>{errors.fullName}</StyledAlert>} */}
           <StyledLabel htmlFor="area">Area in square meters</StyledLabel>
@@ -68,9 +66,7 @@ const Form = () => {
             placeholder="you@whatevermail.com"
             name="email"
             onChange={handleChange}
-            onBlur={() => {
-              console.log("blurred email");
-            }}
+            onBlur={handleBlur}
           />
 
           <StyledButton type="submit" title="Submit" isSafe={isSafeToSubmit} />

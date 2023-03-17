@@ -5,20 +5,19 @@ export const useValidate = (validate) => {
   const [values, setValues] = useState({});
   const [isSafeToSubmit, setIsSafeToSubmit] = useState(false);
   const handleBlur = (e) => {
-    //console.log(`blurred in ${e.target.name}`);
-    console.log(values);
     setErrors(validate(values));
-    console.log(errors);
-    if (Object.keys(errors).length == 0) {
-      console.log("no errors");
-      setIsSafeToSubmit(true);
-      return;
-    }
 
-    setIsSafeToSubmit(false);
+    // if (Object.keys(errors).length == 0) {
+    //   console.log("no errors");
+    //   setIsSafeToSubmit(true);
+    //   return;
+    // }
+
+    // setIsSafeToSubmit(false);
   };
 
   const handleChange = (e) => {
+    console.log("in change" + e.target.name);
     e.persist();
     setValues((values) => ({ ...values, [e.target.name]: e.target.value }));
   };

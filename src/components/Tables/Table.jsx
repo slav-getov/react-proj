@@ -1,9 +1,14 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import { tableData } from "../../static data/data.table";
 
 import { useForm } from "react-hook-form";
 import { tableReducer } from "../../reducers/tableDataReducer";
-import { TableStyles, StyledLabel, TableButtonStyles } from "./table.style.css";
+import {
+  TableStyles,
+  StyledLabel,
+  TableButtonStyles,
+  TableContainerStyles,
+} from "./table.style.css";
 import { ActionableButton } from "../../shared/ActionableButton";
 const Table = () => {
   const [objects, dispatch] = useReducer(tableReducer, tableData);
@@ -19,18 +24,17 @@ const Table = () => {
     dispatch({ type: "add", data });
   };
 
+  useEffect(() => {
+    console.log(items);
+  });
   return (
-    <div>
+    <TableContainerStyles>
       <TableStyles>
         <thead>
           <tr>
-            {items.length > 0 ? (
-              Object.keys(items[0]).map((singleObjectKey) => (
-                <th key={singleObjectKey}>{singleObjectKey}</th>
-              ))
-            ) : (
-              <td>empty</td>
-            )}
+            {Object.keys(tableData[0]).map((singleObjectKey) => (
+              <th key={singleObjectKey}>{singleObjectKey}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -56,21 +60,12 @@ const Table = () => {
         </tbody>
       </TableStyles>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("fullName")} />
-
-          <input {...register("areaSqr")} />
-
-          <input {...register("email")} />
-          <input {...register("phone")} />
-
-          <TableButtonStyles
-            title="Submit Entry"
-            onClick={() => handleSubmit(onSubmit)}
-          />
-        </form>
+        <TableButtonStyles
+          title="Submit New Entry"
+          onClick={() => handleSubmit(onSubmit)}
+        />
       </div>
-    </div>
+    </TableContainerStyles>
   );
 };
 

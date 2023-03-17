@@ -18,4 +18,11 @@ const TableButtonStyles = styled(ActionableButton)`
   }
 `;
 
-export { TableStyles, StyledLabel, TableButtonStyles };
+const TableContainerStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export { TableStyles, StyledLabel, TableButtonStyles, TableContainerStyles };

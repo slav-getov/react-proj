@@ -20,7 +20,7 @@ export const validate = (values) => {
   }
 
   if (!values.email) {
-    errors.phone = "The Phone field is required.";
+    errors.email = "The Email field is required.";
   }
 
   return errors;
