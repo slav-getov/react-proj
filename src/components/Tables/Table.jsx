@@ -1,8 +1,6 @@
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { tableData } from "../../static data/data.table";
-
-import { useForm } from "react-hook-form";
-import { tableReducer } from "../../reducers/tableDataReducer";
+//import { tableReducer } from "../../reducers/tableDataReducer";
 import {
   TableStyles,
   StyledLabel,
@@ -11,21 +9,14 @@ import {
 } from "./table.style.css";
 import { ActionableButton } from "../../shared/ActionableButton";
 const Table = () => {
-  const [objects, dispatch] = useReducer(tableReducer, tableData);
   const [items, setItems] = useState(tableData);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+
   const onSubmit = (data) => {
     console.log(data);
-    dispatch({ type: "add", data });
   };
 
   useEffect(() => {
-    console.log(items);
+    console.log("re-render");
   });
   return (
     <TableContainerStyles>
